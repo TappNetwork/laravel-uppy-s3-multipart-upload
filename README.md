@@ -1,10 +1,10 @@
 # Multipart Uploads using Laravel, AWS S3, and Uppy
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp network/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp network/laravel-uppy-s3-multipart-upload)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tapp network/laravel-uppy-s3-multipart-upload/run-tests?label=tests)](https://github.com/tapp network/laravel-uppy-s3-multipart-upload/actions?query=workflow%3ATests+branch%3Amaster)
-[![Total Downloads](https://img.shields.io/packagist/dt/tapp network/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp network/laravel-uppy-s3-multipart-upload)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/tappnetwork/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tappnetwork/laravel-uppy-s3-multipart-upload)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tappnetwork/laravel-uppy-s3-multipart-upload/run-tests?label=tests)](https://github.com/tappnetwork/laravel-uppy-s3-multipart-upload/actions?query=workflow%3ATests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/tappnetwork/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tappnetwork/laravel-uppy-s3-multipart-upload)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Laravel](https://laravel.com/) (backend) and [Uppy](https://uppy.io/) (frontend).
 
 ## Installation
 
