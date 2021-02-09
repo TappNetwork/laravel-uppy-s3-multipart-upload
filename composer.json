@@ -1,0 +1,60 @@
+{
+    "name": "tappnetwork/laravel-uppy-s3-multipart-upload",
+    "description": "Multipart Uploads using Laravel, AWS S3, and Uppy",
+    "keywords": [
+        "tapp network",
+        "laravel-uppy-s3-multipart-upload"
+    ],
+    "homepage": "https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tapp Network",
+            "email": "steve@tappnetwork.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "aws/aws-sdk-php": "^3.171",
+        "spatie/laravel-package-tools": "^1.1",
+        "illuminate/contracts": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.3",
+        "spatie/laravel-ray": "^1.9",
+        "vimeo/psalm": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "TappNetwork\\LaravelUppyS3MultipartUpload\\": "src",
+            "TappNetwork\\LaravelUppyS3MultipartUpload\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TappNetwork\\LaravelUppyS3MultipartUpload\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TappNetwork\\LaravelUppyS3MultipartUpload\\LaravelUppyS3MultipartUploadServiceProvider"
+            ],
+            "aliases": {
+                "LaravelUppyS3MultipartUpload": "TappNetwork\\LaravelUppyS3MultipartUpload\\LaravelUppyS3MultipartUploadFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
