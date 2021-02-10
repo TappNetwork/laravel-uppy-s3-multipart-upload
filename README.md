@@ -100,10 +100,48 @@ Click on `"Permissions"` tab.
 On `"CORS configuration"` add the following configuration:
 
 ```
-todo
+[
+    {
+        "AllowedHeaders": [
+            "Authorization",
+            "x-amz-date",
+            "x-amz-content-sha256",
+            "content-type"
+        ],
+        "AllowedMethods": [
+            "PUT",
+            "POST",
+            "DELETE",
+            "GET"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "ETag"
+        ]
+    }
+]
+```
+
+On `AllowedOrigins`:
+
+```
+"AllowedOrigins": [
+    "*"
+]
+```
+
+You should list the URLs allowed, e.g.:
+
+```
+"AllowedOrigins": [
+    "https://example.com"
+]
 ```
 
 https://uppy.io/docs/aws-s3-multipart/#S3-Bucket-Configuration
+
 https://uppy.io/docs/aws-s3/#S3-Bucket-configuration
 
 ### Disable CSRF
@@ -267,6 +305,14 @@ $extraJSForOnUploadSuccess = "
 
 Default `extraJSForOnUploadSuccess` value is empty string.
 
+### Clear caches
+
+Run:
+
+```
+php artisan optimize
+```
+
 ## Complete Example
 
 ## Testing
@@ -291,6 +337,12 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Tapp Network](https://github.com/TappNetwork)
 - [All Contributors](../../contributors)
+
+### Libraries used in this package:
+
+- [AWS SDK for PHP](https://github.com/aws/aws-sdk-php)
+- [Uppy](https://uppy.io)
+- [AlpineJS](https://github.com/alpinejs/alpine)
 
 ## License
 
