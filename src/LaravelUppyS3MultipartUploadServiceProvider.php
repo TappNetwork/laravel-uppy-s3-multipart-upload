@@ -2,8 +2,10 @@
 
 namespace TappNetwork\LaravelUppyS3MultipartUpload;
 
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use TappNetwork\LaravelUppyS3MultipartUpload\View\Components\Uppy;
 
 class LaravelUppyS3MultipartUploadServiceProvider extends PackageServiceProvider
 {
@@ -19,5 +21,10 @@ class LaravelUppyS3MultipartUploadServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web');
+    }
+
+    public function bootingPackage()
+    {
+        Blade::component('input.uppy', Uppy::class);
     }
 }
