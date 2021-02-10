@@ -17,12 +17,12 @@ class UppyS3MultipartController extends Controller
     {
         $this->client = new S3Client([
             'version' => 'latest',
-            'region' => config('filesystems.disks.s3.region'),
+            'region'  => config('filesystems.disks.s3.region'),
             'use_accelerate_endpoint' => false,
-            // 'credentials' => [
-            //     'key'    => config('filesystems.disks.s3.key'),
-            //     'secret' => config('filesystems.disks.s3.secret'),
-            // ]
+            'credentials' => [
+                'key'    => config('filesystems.disks.s3.key'),
+                'secret' => config('filesystems.disks.s3.secret'),
+            ]
         ]);
 
         $this->bucket = config('filesystems.disks.s3.bucket');
