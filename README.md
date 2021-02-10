@@ -108,7 +108,7 @@ DELETE  /s3/multipart/{uploadId}
 
 ### Add a hidden field for the uploaded file url
 
-1. Add a hidden input form element on your blade template. When the upload is finished, it will receive the url of the uploaded file:
+Add a hidden input form element on your blade template. When the upload is finished, it will receive the url of the uploaded file:
 
 E.g.:
 
@@ -122,11 +122,11 @@ E.g.:
 <x-input.uppy />
 ```
 
-#### Passing data to the uppy blade component
+### Passing data to the uppy blade component
 
-**Name of the hidden field that will receive the url of uploaded file**
+**Hidden field name**
 
-You can pass any uppy options via `options` attribute:
+Use the `hiddenField` attribute to provide the name of the hidden field that will receive the url of uploaded file:
 
 ```php
 $hiddenField = 'image_url';
@@ -139,7 +139,7 @@ $hiddenField = 'image_url';
 The `file` name will be used if none is provided.
 
 
-**Uppy Options**
+**Uppy Core Options**
 
 https://uppy.io/docs/uppy/#Options
 
