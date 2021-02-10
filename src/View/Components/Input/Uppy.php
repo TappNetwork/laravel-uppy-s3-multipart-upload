@@ -62,6 +62,6 @@ class Uppy extends Component
      */
     public function render()
     {
-        return view('components.input.uppy');
+        return view('uppy-s3-multipart-upload::components.input.uppy');
     }
 }
