@@ -16,22 +16,10 @@ Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Larav
 
 ## Installation
 
-You can install the package via composer:
+Install the package via composer:
 
 ```bash
 composer require tappnetwork/laravel-uppy-s3-multipart-upload
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="TappNetwork\LaravelUppyS3MultipartUpload\LaravelUppyS3MultipartUploadServiceProvider" --tag="laravel-uppy-s3-multipart-upload-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
 ```
 
 ### Add required JS libraries
@@ -54,6 +42,33 @@ Add on your `package.json` file the Uppy JS libraries and AlpineJS library:
     ...
 ```
 
+Add in your `resources/js/bootstrap.js` file:
+
+```javascript
+...
+
+require('@uppy/core/dist/style.min.css')
+require('@uppy/drag-drop/dist/style.min.css')
+require('@uppy/status-bar/dist/style.min.css')
+
+import Uppy from '@uppy/core'
+import DragDrop from '@uppy/drag-drop'
+import StatusBar from '@uppy/status-bar'
+import AwsS3Multipart from '@uppy/aws-s3-multipart'
+
+window.Uppy = Uppy
+window.DragDrop = DragDrop
+window.StatusBar = StatusBar
+window.AwsS3Multipart = AwsS3Multipart
+```
+
+Add in your `resources/js/app.js`:
+
+```javascript
+...
+require('alpinejs');
+```
+
 Install the JS libraries:
 
 ```
@@ -66,8 +81,16 @@ $ npm run dev
 
 ### AWS S3 Setup
 
-Add S3 credentials, region, and bucket in your filesytems config:
+This package installs the [AWS SDK for PHP](https://github.com/aws/aws-sdk-php) and use Laravel's default `s3` disk configuration from `filesystems.php` file.
 
+You just have to add your S3 keys, region, and bucket using the following env vars in your `.env` file:
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=
+AWS_BUCKET=
+AWS_URL="https://s3.amazonaws.com"
+AWS_POST_END_POINT="https://${AWS_BUCKET}.s3.amazonaws.com/"
 
 To allow direct multipart uploads to your S3 bucket, you need to add some extra configuration on bucket's `CORS configuration`.
 On your AWS S3 console, select your bucket.
