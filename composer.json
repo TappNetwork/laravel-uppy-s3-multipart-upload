@@ -1,5 +1,5 @@
 {
-    "name": "tappnetwork/laravel-uppy-s3-multipart-upload",
+    "name": "tapp/laravel-uppy-s3-multipart-upload",
     "description": "Multipart Uploads using Laravel, AWS S3, and Uppy",
     "keywords": [
         "tapp network",
@@ -34,7 +34,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "TappNetwork\\LaravelUppyS3MultipartUpload\\Tests\\": "tests"
+            "Tapp\\LaravelUppyS3MultipartUpload\\Tests\\": "tests"
         }
     },
     "scripts": {

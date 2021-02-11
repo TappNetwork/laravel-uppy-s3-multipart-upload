@@ -1,6 +1,6 @@
 <?php
 
-namespace TappNetwork\LaravelUppyS3MultipartUpload;
+namespace Tapp\LaravelUppyS3MultipartUpload;
 
 use Illuminate\Support\Facades\Facade;
 

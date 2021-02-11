@@ -1,6 +1,6 @@
 <?php
 
-namespace TappNetwork\LaravelUppyS3MultipartUpload\Http\Controllers;
+namespace Tapp\LaravelUppyS3MultipartUpload\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

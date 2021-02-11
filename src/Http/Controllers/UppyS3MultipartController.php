@@ -1,6 +1,6 @@
 <?php
 
-namespace TappNetwork\LaravelUppyS3MultipartUpload\Http\Controllers;
+namespace Tapp\LaravelUppyS3MultipartUpload\Http\Controllers;
 
 use Aws\S3\S3Client;
 use Illuminate\Http\Request;
