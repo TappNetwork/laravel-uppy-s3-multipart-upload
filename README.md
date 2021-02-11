@@ -16,7 +16,7 @@ Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Larav
 
 ## Installation
 
-Install the package via composer:
+### Install the package via Composer
 
 ```bash
 composer require tapp/laravel-uppy-s3-multipart-upload
@@ -78,6 +78,33 @@ $ npm run dev
 
 > You can use CDNs for [Uppy](https://uppy.io/docs/#With-a-script-tag) and [AlpineJS](https://github.com/alpinejs/alpine), if you prefer.
 
+### Publish config file
+
+Publish the config file with:
+```bash
+php artisan vendor:publish --provider="Tapp\LaravelUppyS3MultipartUpload\LaravelUppyS3MultipartUploadServiceProvider" --tag="laravel-uppy-s3-multipart-upload-config"
+```
+
+This is the contents of the published config file:
+
+```php
+return [
+    's3' => [
+        'bucket' => [
+            /*
+             * Folder on bucket to save the file
+             */
+            'folder' => '',
+        ],
+        'presigned_url' => [
+            /*
+             * Expiration time of the presigned URLs
+             */
+            'expiry_time' => '+1 hour',
+        ],
+    ],
+];
+```
 
 ### AWS S3 Setup
 
@@ -143,6 +170,29 @@ You should list the URLs allowed, e.g.:
 https://uppy.io/docs/aws-s3-multipart/#S3-Bucket-Configuration
 
 https://uppy.io/docs/aws-s3/#S3-Bucket-configuration
+
+#### Configuration
+
+You can configure the folder to upload the files and the expiration of the presigned URLs used to upload the parts, with the `config/uppy-s3-multipart-upload.php` file:
+
+```php
+return [
+    's3' => [
+        'bucket' => [
+            /*
+             * Folder on bucket to save the file
+             */
+            'folder' => 'videos',
+        ],
+        'presigned_url' => [
+            /*
+             * Expiration time of the presigned URLs
+             */
+            'expiry_time' => '+30 minutes',
+        ],
+    ],
+];
+```
 
 ## Endpoints added
 

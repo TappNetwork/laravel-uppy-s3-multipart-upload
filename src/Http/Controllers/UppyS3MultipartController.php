@@ -31,7 +31,7 @@ class UppyS3MultipartController extends Controller
     protected function encodeURIComponent($str)
     {
         if (! function_exists('encodeURIComponent')) {
-            $revert = ['%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')'];
+            $revert = ['%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')', '%2F'=>'/'];
 
             return strtr(rawurlencode($str), $revert);
         }
@@ -103,7 +103,8 @@ class UppyS3MultipartController extends Controller
         $filenameRequest = $request->input('filename');
         $fileName = pathinfo($filenameRequest, PATHINFO_FILENAME);
         $fileExtension = pathinfo($filenameRequest, PATHINFO_EXTENSION);
-        $key = Str::of($fileName.'_'.microtime())->slug('_').'.'.$fileExtension;
+        $folder = config('uppy-s3-multipart-upload.s3.bucket.folder') ? config('uppy-s3-multipart-upload.s3.bucket.folder').'/' : '';
+        $key = $folder.Str::of($fileName.'_'.microtime())->slug('_').'.'.$fileExtension;
 
         $result = $this->client->createMultipartUpload([
             'Bucket'             => $this->bucket,
@@ -216,7 +217,7 @@ class UppyS3MultipartController extends Controller
             'Body'       => '',
         ]);
 
-        $presignedRequest = $this->client->createPresignedRequest($command, '+1 hour');
+        $presignedRequest = $this->client->createPresignedRequest($command, config('uppy-s3-multipart-upload.s3.presigned_url.expiry_time'));
 
         $presignedUrl = (string) $presignedRequest->getUri();
 
