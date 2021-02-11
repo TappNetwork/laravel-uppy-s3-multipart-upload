@@ -48,10 +48,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TappNetwork\\LaravelUppyS3MultipartUpload\\LaravelUppyS3MultipartUploadServiceProvider"
+                "Tapp\\LaravelUppyS3MultipartUpload\\LaravelUppyS3MultipartUploadServiceProvider"
             ],
             "aliases": {
-                "LaravelUppyS3MultipartUpload": "TappNetwork\\LaravelUppyS3MultipartUpload\\LaravelUppyS3MultipartUploadFacade"
+                "LaravelUppyS3MultipartUpload": "Tapp\\LaravelUppyS3MultipartUpload\\LaravelUppyS3MultipartUploadFacade"
             }
         }
     },
