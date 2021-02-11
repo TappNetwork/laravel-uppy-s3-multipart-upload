@@ -28,8 +28,8 @@
     },
     "autoload": {
         "psr-4": {
-            "TappNetwork\\LaravelUppyS3MultipartUpload\\": "src",
-            "TappNetwork\\LaravelUppyS3MultipartUpload\\Database\\Factories\\": "database/factories"
+            "Tapp\\LaravelUppyS3MultipartUpload\\": "src",
+            "Tapp\\LaravelUppyS3MultipartUpload\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {

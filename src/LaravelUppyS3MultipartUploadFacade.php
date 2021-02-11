@@ -5,7 +5,7 @@ namespace Tapp\LaravelUppyS3MultipartUpload;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \TappNetwork\LaravelUppyS3MultipartUpload\LaravelUppyS3MultipartUpload
+ * @see \Tapp\LaravelUppyS3MultipartUpload\LaravelUppyS3MultipartUpload
  */
 class LaravelUppyS3MultipartUploadFacade extends Facade
 {
