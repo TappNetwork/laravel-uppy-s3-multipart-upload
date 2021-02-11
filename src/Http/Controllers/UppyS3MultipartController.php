@@ -41,6 +41,8 @@ class UppyS3MultipartController extends Controller
 
     public function createMultipartUploadOptions(Request $request)
     {
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, X-CSRF-TOKEN');
+
         return response([
             'message' => 'No content',
         ], 204);

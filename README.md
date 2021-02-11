@@ -144,16 +144,6 @@ https://uppy.io/docs/aws-s3-multipart/#S3-Bucket-Configuration
 
 https://uppy.io/docs/aws-s3/#S3-Bucket-configuration
 
-### Disable CSRF
-
-Disable CSRF on `s3/multipart` routes by adding this in your `app/Http/Middleware/VerifyCsrfToken.php`:
-
-```php
-protected $except = [
-    's3/multipart*',
-];
-```
-
 ## Endpoints added
 
 This package add the following routes:

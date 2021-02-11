@@ -30,6 +30,10 @@
           .use(DragDrop, {{ $dragDropOptions }})
           .use(AwsS3Multipart, {
               companionUrl: '/',
+              companionHeaders:
+              {
+                  'X-CSRF-TOKEN': window.csrfToken,
+              },
           })
           .use(StatusBar, {{ $statusBarOptions }})
           .on('upload-success', onUploadSuccess('.upload .uploaded-files ol'));
