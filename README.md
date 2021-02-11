@@ -19,7 +19,7 @@ Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Larav
 Install the package via composer:
 
 ```bash
-composer require tappnetwork/laravel-uppy-s3-multipart-upload
+composer require tapp/laravel-uppy-s3-multipart-upload
 ```
 
 ### Add required JS libraries
