@@ -326,7 +326,7 @@ Default drag & drop options if none is informed:
 }
 ```
 
-**Extra JavaScript to uploadOn**
+**Extra JavaScript to onUploadSuccess**
 
 If you need to add extra JavaScript code on `onUploadSuccess` function, use the `extraJSForOnUploadSuccess` attribute:
 
@@ -351,6 +351,7 @@ Run:
 
 ```
 php artisan optimize
+php artisan view:clear
 ```
 
 ## Complete Example
