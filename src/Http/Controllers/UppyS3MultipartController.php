@@ -169,8 +169,8 @@ class UppyS3MultipartController extends Controller
             $parts = $parts->concat($results['Parts']);
 
             if ($results['IsTruncated']) {
-                $results = $this->listPartsPage($key, $uploadId, $partResponse['NextPartNumberMarker'], $parts);
-                $parts = $parts->concat($partResponse['Parts']);
+                $results = $this->listPartsPage($key, $uploadId, $results['NextPartNumberMarker'], $parts);
+                $parts = $parts->concat($results['Parts']);
             }
         }
 
