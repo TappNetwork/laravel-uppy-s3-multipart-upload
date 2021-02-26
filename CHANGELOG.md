@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-uppy-s3-multipart-upload` will be documented in this file.
 
-## 1.0.0 - 202X-XX-XX
+## 0.1 - 2021-02-11
 
-- initial release
+- Initial release
+
+## 0.2 - 2021-02-25
+
+- Add configuration file
+- Fix variable name
+- Allow CSRF
+- Update README
