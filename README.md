@@ -1,7 +1,6 @@
 # Multipart Uploads using Laravel, AWS S3, and Uppy
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tapp/laravel-uppy-s3-multipart-upload/run-tests?label=tests)](https://github.com/tapp/laravel-uppy-s3-multipart-upload/actions?query=workflow%3ATests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
 
 Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Laravel](https://laravel.com/) (backend) and [Uppy](https://uppy.io/) (frontend).
@@ -104,6 +103,12 @@ return [
         ],
     ],
 ];
+```
+
+### Publish view file
+
+```bash
+php artisan vendor:publish --provider="Tapp\LaravelUppyS3MultipartUpload\LaravelUppyS3MultipartUploadServiceProvider" --tag="laravel-uppy-s3-multipart-upload-views"
 ```
 
 ### AWS S3 Setup
@@ -369,14 +374,6 @@ Run:
 ```
 php artisan optimize
 php artisan view:clear
-```
-
-## Complete Example
-
-## Testing
-
-```bash
-composer test
 ```
 
 ## Changelog
