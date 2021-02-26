@@ -12,3 +12,8 @@ All notable changes to `laravel-uppy-s3-multipart-upload` will be documented in 
 - Fix variable name
 - Allow CSRF
 - Update README
+
+## 0.3 - 2021-02-26
+
+- Add S3 transfer acceleration configuration
+- Update README

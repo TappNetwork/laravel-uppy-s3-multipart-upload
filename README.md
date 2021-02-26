@@ -108,7 +108,7 @@ return [
 
 ### AWS S3 Setup
 
-This package installs the [AWS SDK for PHP](https://github.com/aws/aws-sdk-php) and use Laravel's default `s3` disk configuration from `filesystems.php` file.
+This package installs the [AWS SDK for PHP](https://github.com/aws/aws-sdk-php) and use Laravel's default `s3` disk configuration from `config/filesystems.php` file.
 
 You just have to add your S3 keys, region, and bucket using the following env vars in your `.env` file:
 
@@ -170,6 +170,23 @@ You should list the URLs allowed, e.g.:
 https://uppy.io/docs/aws-s3-multipart/#S3-Bucket-Configuration
 
 https://uppy.io/docs/aws-s3/#S3-Bucket-configuration
+
+#### Add S3 Transfer Acceleration
+
+To use [S3 transfer acceleration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html), enable it adding a `'use_accelerate_endpoint' => env('AWS_USE_ACCELERATE_ENDPOINT')` option on `s3` key in `config/filesystems.php` file:
+
+```php
+'s3' => [
+            ...
+            'use_accelerate_endpoint' => env('AWS_USE_ACCELERATE_ENDPOINT'),
+        ],
+```
+
+Add on your `.env` file this env var:
+
+```
+AWS_USE_ACCELERATE_ENDPOINT=true
+```
 
 #### Configuration
 
@@ -372,7 +389,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+If you discover any security-related issues, please email security@tappnetwork.com.
 
 ## Credits
 

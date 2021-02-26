@@ -6,6 +6,7 @@ use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
+use Throwable;
 
 class UppyS3MultipartController extends Controller
 {
@@ -17,8 +18,8 @@ class UppyS3MultipartController extends Controller
     {
         $this->client = new S3Client([
             'version' => 'latest',
-            'region'  => config('filesystems.disks.s3.region'),
-            'use_accelerate_endpoint' => false,
+            'region' => config('filesystems.disks.s3.region'),
+            'use_accelerate_endpoint' => config('filesystems.disks.s3.use_accelerate_endpoint'),
             'credentials' => [
                 'key'    => config('filesystems.disks.s3.key'),
                 'secret' => config('filesystems.disks.s3.secret'),
@@ -106,12 +107,19 @@ class UppyS3MultipartController extends Controller
         $folder = config('uppy-s3-multipart-upload.s3.bucket.folder') ? config('uppy-s3-multipart-upload.s3.bucket.folder').'/' : '';
         $key = $folder.Str::of($fileName.'_'.microtime())->slug('_').'.'.$fileExtension;
 
-        $result = $this->client->createMultipartUpload([
-            'Bucket'             => $this->bucket,
-            'Key'                => $key,
-            'ContentType'        => $type,
-            'ContentDisposition' => 'inline',
-        ]);
+        try {
+            $result = $this->client->createMultipartUpload([
+                'Bucket'             => $this->bucket,
+                'Key'                => $key,
+                'ContentType'        => $type,
+                'ContentDisposition' => 'inline',
+            ]);
+        } catch (Throwable $exception) {
+            return response()
+                ->json([
+                    'message' => $exception->getMessage(),
+                ], $exception->getStatusCode());
+        }
 
         return response()
             ->json([
