@@ -19,7 +19,7 @@ class UppyS3MultipartController extends Controller
         $this->client = new S3Client([
             'version' => 'latest',
             'region' => config('filesystems.disks.s3.region'),
-            'use_accelerate_endpoint' => config('filesystems.disks.s3.use_accelerate_endpoint'),
+            'use_accelerate_endpoint' => config('uppy-s3-multipart-upload.s3.use_accelerate_endpoint'),
             'credentials' => [
                 'key'    => config('filesystems.disks.s3.key'),
                 'secret' => config('filesystems.disks.s3.secret'),

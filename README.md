@@ -178,20 +178,8 @@ https://uppy.io/docs/aws-s3/#S3-Bucket-configuration
 
 #### Add S3 Transfer Acceleration
 
-To use [S3 transfer acceleration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html), enable it adding a `'use_accelerate_endpoint' => env('AWS_USE_ACCELERATE_ENDPOINT')` option on `s3` key in `config/filesystems.php` file:
-
-```php
-'s3' => [
-            ...
-            'use_accelerate_endpoint' => env('AWS_USE_ACCELERATE_ENDPOINT'),
-        ],
-```
-
-Add on your `.env` file this env var:
-
-```
-AWS_USE_ACCELERATE_ENDPOINT=true
-```
+To use [S3 transfer acceleration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html), enable it by adding a 
+a `AWS_USE_ACCELERATE_ENDPOINT=true` env var on your `.env` file.
 
 #### Configuration
 
@@ -212,6 +200,7 @@ return [
              */
             'expiry_time' => '+30 minutes',
         ],
+        'use_accelerate_endpoint' => env('AWS_USE_ACCELERATE_ENDPOINT'),
     ],
 ];
 ```

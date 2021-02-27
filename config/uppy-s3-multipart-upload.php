@@ -14,5 +14,6 @@ return [
              */
             'expiry_time' => '+1 hour',
         ],
+        'use_accelerate_endpoint' => env('AWS_USE_ACCELERATE_ENDPOINT'),
     ],
 ];
