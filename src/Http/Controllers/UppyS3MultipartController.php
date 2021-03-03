@@ -17,12 +17,10 @@ class UppyS3MultipartController extends Controller
 
     public function __construct()
     {
-        $credentials = new Credentials(config('filesystems.disks.s3.key'), config('filesystems.disks.s3.secret'));
         $this->client = new S3Client([
             'version' => 'latest',
             'region' => config('filesystems.disks.s3.region'),
             'use_accelerate_endpoint' => config('uppy-s3-multipart-upload.s3.use_accelerate_endpoint'),
-            'credentials' => $credentials,
         ]);
 
         $this->bucket = config('filesystems.disks.s3.bucket');
