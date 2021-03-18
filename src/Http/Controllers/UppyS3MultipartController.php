@@ -2,10 +2,9 @@
 
 namespace Tapp\LaravelUppyS3MultipartUpload\Http\Controllers;
 
-use Aws\Credentials\Credentials;
-use Aws\S3\S3Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Throwable;
 
@@ -17,11 +16,7 @@ class UppyS3MultipartController extends Controller
 
     public function __construct()
     {
-        $this->client = new S3Client([
-            'version' => 'latest',
-            'region' => config('filesystems.disks.s3.region'),
-            'use_accelerate_endpoint' => config('uppy-s3-multipart-upload.s3.use_accelerate_endpoint'),
-        ]);
+        $this->client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
 
         $this->bucket = config('filesystems.disks.s3.bucket');
     }
