@@ -1,7 +1,7 @@
 <?php
 
-use Tapp\LaravelUppyS3MultipartUpload\Http\Controllers\UppyS3MultipartController;
 use Illuminate\Support\Facades\Route;
+use Tapp\LaravelUppyS3MultipartUpload\Http\Controllers\UppyS3MultipartController;
 
 Route::post('/s3/multipart', [UppyS3MultipartController::class, 'createMultipartUpload']);
 

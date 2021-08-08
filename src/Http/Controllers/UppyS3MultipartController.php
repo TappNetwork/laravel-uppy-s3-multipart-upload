@@ -3,7 +3,6 @@
 namespace Tapp\LaravelUppyS3MultipartUpload\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Throwable;
@@ -23,7 +22,7 @@ class UppyS3MultipartController extends Controller
 
     protected function encodeURIComponent($str)
     {
-        if (! function_exists('encodeURIComponent')) {
+        if (!function_exists('encodeURIComponent')) {
             $revert = ['%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')', '%2F'=>'/'];
 
             return strtr(rawurlencode($str), $revert);

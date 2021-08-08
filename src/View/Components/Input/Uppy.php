@@ -23,18 +23,18 @@ class Uppy extends Component
      */
     public function __construct(string $options = '', string $statusBarOptions = '', string $dragDropOptions = '', string $hiddenField = '', $extraJSForOnUploadSuccess = '')
     {
-        $this->options                   = $options;
-        $this->statusBarOptions          = $statusBarOptions;
-        $this->dragDropOptions           = $dragDropOptions;
-        $this->hiddenField               = $hiddenField;
+        $this->options = $options;
+        $this->statusBarOptions = $statusBarOptions;
+        $this->dragDropOptions = $dragDropOptions;
+        $this->hiddenField = $hiddenField;
         $this->extraJSForOnUploadSuccess = $extraJSForOnUploadSuccess;
 
         if (!$options) {
-            $this->options = "{
+            $this->options = '{
                 debug: true,
                 autoProceed: true,
                 allowMultipleUploads: false,
-            }";
+            }';
         }
 
         if (!$statusBarOptions) {
@@ -51,7 +51,7 @@ class Uppy extends Component
         }
 
         if (!$hiddenField) {
-            $this->hiddenField = "file";
+            $this->hiddenField = 'file';
         }
     }
 
