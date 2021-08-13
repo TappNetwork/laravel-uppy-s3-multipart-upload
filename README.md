@@ -252,7 +252,7 @@ Add a hidden input form element on your blade template. When the upload is finis
 E.g.:
 
 ```html
-<input type="hidden" name="image_url" id="image_url" />
+<input type="hidden" name="file" id="file" />
 ```
 
 ### Add the `uppy` blade component to your blade view:
