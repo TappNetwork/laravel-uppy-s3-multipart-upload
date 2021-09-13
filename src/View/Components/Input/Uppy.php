@@ -16,18 +16,21 @@ class Uppy extends Component
 
     public string $extraJSForOnUploadSuccess;
 
+    public string $uploadElementClass;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $options = '', string $statusBarOptions = '', string $dragDropOptions = '', string $hiddenField = '', $extraJSForOnUploadSuccess = '')
+    public function __construct(string $options = '', string $statusBarOptions = '', string $dragDropOptions = '', string $hiddenField = 'file', string $extraJSForOnUploadSuccess = '', string $uploadElementClass = 'upload')
     {
         $this->options = $options;
         $this->statusBarOptions = $statusBarOptions;
         $this->dragDropOptions = $dragDropOptions;
         $this->hiddenField = $hiddenField;
         $this->extraJSForOnUploadSuccess = $extraJSForOnUploadSuccess;
+        $this->uploadElementClass = $uploadElementClass;
 
         if (!$options) {
             $this->options = '{
@@ -39,19 +42,15 @@ class Uppy extends Component
 
         if (!$statusBarOptions) {
             $this->statusBarOptions = "{
-                target: '.upload .for-ProgressBar',
+                target: '.{$uploadElementClass} .for-ProgressBar',
                 hideAfterFinish: false,
             }";
         }
 
         if (!$dragDropOptions) {
             $this->dragDropOptions = "{
-                target: '.upload .for-DragDrop',
+                target: '.{$uploadElementClass} .for-DragDrop',
             }";
-        }
-
-        if (!$hiddenField) {
-            $this->hiddenField = 'file';
         }
     }
 
