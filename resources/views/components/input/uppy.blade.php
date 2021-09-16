@@ -24,9 +24,9 @@
             {{ $extraJSForOnUploadSuccess }}
           };
 
-        uppyUpload = new Uppy({{ $options }});
+        uppyUpload{{ $hiddenField }} = new Uppy({{ $options }});
 
-        uppyUpload
+        uppyUpload{{ $hiddenField }}
           .use(DragDrop, {{ $dragDropOptions }})
           .use(AwsS3Multipart, {
               companionUrl: '/',
@@ -36,10 +36,10 @@
               },
           })
           .use(StatusBar, {{ $statusBarOptions }})
-          .on('upload-success', onUploadSuccess('.upload .uploaded-files ol'));
+          .on('upload-success', onUploadSuccess('.{{ $uploadElementClass }} .uploaded-files ol'));
     "
 >
-    <section class="upload">
+    <section class="{{ $uploadElementClass }}">
       <div class="for-DragDrop" x-ref="input"></div>
 
       <div class="for-ProgressBar"></div>

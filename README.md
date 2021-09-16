@@ -362,6 +362,43 @@ Default drag & drop options if none is informed:
 }
 ```
 
+**Upload Element Class**
+
+Use the `uploadElementClass` attribute to provide the class of the HTML element used for upload:
+
+```php
+$imageClass = 'images';
+```
+
+```html
+<x-input.uppy :uploadElementClass="$imageClass" />
+```
+
+The `upload` class will be used if none is provided.
+
+**Multiple Uppy Instances**
+
+If you want to use multiple Uppy instances, add a different `uploadElementClass` attribute to each instance. E.g.:
+
+```html
+<!-- First Uppy instance for image uploads -->
+<div>
+    <input type="hidden" name="images" id="images" />
+    <x-input.uppy :options="$imageOptions" :hiddenField="$imageField" :uploadElementClass="$imageClass" />
+</div>
+
+
+<!-- Second Uppy instance for video uploads -->
+<div>
+    <input type="hidden" name="videos" id="videos" />
+    <x-input.uppy :options="$videoOptions" :hiddenField="$videoField" :uploadElementClass="$videoClass" />
+</div>
+```
+
+**Note from Uppy docs**: _"If multiple Uppy instances are being used, for instance, on two different pages,
+an id should be specified. This allows Uppy to store information in localStorage without colliding with other Uppy instances."_
+[Learn more here](https://uppy.io/docs/uppy/#id-39-uppy-39).
+
 **Extra JavaScript to onUploadSuccess**
 
 If you need to add extra JavaScript code on `onUploadSuccess` function, use the `extraJSForOnUploadSuccess` attribute:
