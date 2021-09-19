@@ -208,7 +208,7 @@ class UppyS3MultipartController extends Controller
     {
         $key = $this->encodeURIComponent($request->input('key'));
 
-        $partNumbers = explode(",", $request->input('partNumbers'));
+        $partNumbers = explode(',', $request->input('partNumbers'));
 
         $presignedUrls = [];
 
