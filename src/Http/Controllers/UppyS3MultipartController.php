@@ -201,28 +201,32 @@ class UppyS3MultipartController extends Controller
 
             https://github.com/transloadit/uppy/blob/master/packages/%40uppy/aws-s3-multipart/src/index.js#L104
 
-            return this.client.get(`s3/multipart/${uploadId}/${number}?key=${filename}`)
+            return this.client.get(`s3/multipart/${uploadId}/batch?key=${filename}&partNumbers=${partNumbers.join(',')}`)
             .then(assertServerError)
     */
-    public function prepareUploadPart(Request $request, $uploadId, $partNumber)
+    public function prepareUploadParts(Request $request, $uploadId)
     {
         $key = $this->encodeURIComponent($request->input('key'));
 
-        $command = $this->client->getCommand('uploadPart', [
-            'Bucket'     => $this->bucket,
-            'Key'        => $key,
-            'UploadId'   => $uploadId,
-            'PartNumber' => $partNumber,
-            'Body'       => '',
-        ]);
+        $partNumbers = explode(",", $request->input('partNumbers'));
 
-        $presignedRequest = $this->client->createPresignedRequest($command, config('uppy-s3-multipart-upload.s3.presigned_url.expiry_time'));
+        $presignedUrls = [];
 
-        $presignedUrl = (string) $presignedRequest->getUri();
+        foreach ($partNumbers as $partNumber) {
+            $command = $this->client->getCommand('uploadPart', [
+                'Bucket'     => $this->bucket,
+                'Key'        => $key,
+                'UploadId'   => $uploadId,
+                'PartNumber' => (int) $partNumber,
+                'Body'       => '',
+            ]);
+
+            $presignedUrls[$partNumber] = (string) $this->client->createPresignedRequest($command, config('uppy-s3-multipart-upload.s3.presigned_url.expiry_time'))->getUri();
+        }
 
         return response()
             ->json([
-                'url' => $presignedUrl,
+                'presignedUrls' => $presignedUrls,
             ]);
     }
 
