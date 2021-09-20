@@ -9,7 +9,7 @@ Route::options('/s3/multipart', [UppyS3MultipartController::class, 'createMultip
 
 Route::get('/s3/multipart/{uploadId}', [UppyS3MultipartController::class, 'getUploadedParts']);
 
-Route::get('/s3/multipart/{uploadId}/{partNumber}', [UppyS3MultipartController::class, 'prepareUploadPart']);
+Route::get('/s3/multipart/{uploadId}/batch', [UppyS3MultipartController::class, 'prepareUploadParts']);
 
 Route::post('/s3/multipart/{uploadId}/complete', [UppyS3MultipartController::class, 'completeMultipartUpload']);
 

@@ -50,10 +50,10 @@ Add on your `package.json` file the Uppy JS libraries and AlpineJS library:
         ...
     },
     "dependencies": {
-        "@uppy/aws-s3-multipart": "^1.8.12",
-        "@uppy/core": "^1.16.0",
-        "@uppy/drag-drop": "^1.4.24",
-        "@uppy/status-bar": "^1.9.0",
+        "@uppy/aws-s3-multipart": "^2.0.2",
+        "@uppy/core": "^2.0.2",
+        "@uppy/drag-drop": "^2.0.1",
+        "@uppy/status-bar": "^2.0.1"
         ...
     }
     ...
