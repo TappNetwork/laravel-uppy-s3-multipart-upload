@@ -238,7 +238,7 @@ This package add the following routes:
 POST    /s3/multipart
 OPTIONS /s3/multipart
 GET     /s3/multipart/{uploadId}
-GET     /s3/multipart/{uploadId}/{partNumber}
+GET     /s3/multipart/{uploadId}/batch
 POST    /s3/multipart/{uploadId}/complete
 DELETE  /s3/multipart/{uploadId}
 ```
