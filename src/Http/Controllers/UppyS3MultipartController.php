@@ -15,7 +15,7 @@ class UppyS3MultipartController extends Controller
 
     public function __construct()
     {
-        $this->client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
+        $this->client = Storage::disk('s3')->getClient();
 
         $this->bucket = config('filesystems.disks.s3.bucket');
     }
