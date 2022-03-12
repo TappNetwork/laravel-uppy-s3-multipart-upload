@@ -21,24 +21,6 @@ Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Larav
 composer require tapp/laravel-uppy-s3-multipart-upload
 ```
 
-**Heads up!**
-
-If you are using a fresh Laravel installation with its latest version, it uses PSR-7 version 2, and currently, the AWS SDK for PHP is incompatible with this version.
-
-Please follow this issue for updates: https://github.com/aws/aws-sdk-php/issues/2264
-
-In the meantime, to install this package in a fresh Laravel app, use the `--update-with-dependencies` option:
-
-```bash
-$ composer require tapp/laravel-uppy-s3-multipart-upload --update-with-dependencies
-```
-
-Also, to install the Flysystem S3 adapter:
-
-```bash
-$ composer require league/flysystem-aws-s3-v3:"^1.0"
-```
-
 ### Add required JS libraries
 
 Add on your `package.json` file the Uppy JS libraries and AlpineJS library:

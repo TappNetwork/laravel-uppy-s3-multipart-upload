@@ -1,0 +1,15 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 2
+    paths:
+        - src
+        - config
+    tmpDir: build/phpstan
+    excludePaths:
+        - ./vendor
+    checkMissingIterableValueType: true
+    ignoreErrors:
+        - '#Call to an undefined method Illuminate\\Contracts\\Filesystem\\Filesystem::getClient\(\).#'
+        - '#Call to an undefined method Throwable::getStatusCode\(\).#'
