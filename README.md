@@ -122,8 +122,6 @@ AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
 AWS_BUCKET=
-AWS_URL="https://s3.amazonaws.com"
-AWS_POST_END_POINT="https://${AWS_BUCKET}.s3.amazonaws.com/"
 ```
 
 To allow direct multipart uploads to your S3 bucket, you need to add some extra configuration on bucket's `CORS configuration`.
