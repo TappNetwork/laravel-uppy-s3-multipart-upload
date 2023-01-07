@@ -124,6 +124,11 @@ AWS_DEFAULT_REGION=
 AWS_BUCKET=
 ```
 
+> **Warning**
+>
+> The `AWS_URL` or `AWS_POST_END_POINT` env vars should only be set when using a custom, non-aws endpoint.
+> For more details please refer to this issue: https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/issues/14.
+
 To allow direct multipart uploads to your S3 bucket, you need to add some extra configuration on bucket's `CORS configuration`.
 On your AWS S3 console, select your bucket.
 Click on `"Permissions"` tab.
