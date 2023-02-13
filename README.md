@@ -28,14 +28,14 @@ Add on your `package.json` file the Uppy JS libraries and AlpineJS library:
 ```
     ...
     "devDependencies": {
-        "alpinejs": "^2.7.3",
+        "alpinejs": "^3.11.1",
         ...
     },
     "dependencies": {
-        "@uppy/aws-s3-multipart": "^2.0.2",
-        "@uppy/core": "^2.0.2",
-        "@uppy/drag-drop": "^2.0.1",
-        "@uppy/status-bar": "^2.0.1"
+        "@uppy/aws-s3-multipart": "^3.1.2",
+        "@uppy/core": "^3.0.5",
+        "@uppy/drag-drop": "^3.0.1",
+        "@uppy/status-bar": "^3.0.1"
         ...
     }
     ...
@@ -65,14 +65,25 @@ Add in your `resources/js/app.js`:
 
 ```javascript
 ...
-require('alpinejs');
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
 ```
 
 Install the JS libraries:
 
+for Mix:
 ```
-$ npm install
-$ npm run dev
+npm install
+npm run dev
+```
+
+for Vite:
+```
+npm install
+npm run build
 ```
 
 > You can use CDNs for [Uppy](https://uppy.io/docs/#With-a-script-tag) and [AlpineJS](https://github.com/alpinejs/alpine), if you prefer.
@@ -223,7 +234,7 @@ This package add the following routes:
 POST    /s3/multipart
 OPTIONS /s3/multipart
 GET     /s3/multipart/{uploadId}
-GET     /s3/multipart/{uploadId}/batch
+GET     /s3/multipart/{uploadId}/{partNumber}
 POST    /s3/multipart/{uploadId}/complete
 DELETE  /s3/multipart/{uploadId}
 ```

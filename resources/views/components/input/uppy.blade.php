@@ -24,7 +24,7 @@
             {{ $extraJSForOnUploadSuccess }}
           };
 
-        uppyUpload{{ $hiddenField }} = new Uppy({{ $options }});
+        const uppyUpload{{ $hiddenField }} = new Uppy({{ $options }});
 
         uppyUpload{{ $hiddenField }}
           .use(DragDrop, {{ $dragDropOptions }})
