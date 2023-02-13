@@ -40,15 +40,16 @@ class UppyS3MultipartController extends Controller
     /**
      * Add the preflight response header so it's possible to use the X-CSRF-TOKEN on Uppy request header.
      *
-     * @return \Illuminate\Support\Response  Response with 204 no content
+     * @return string  JSON with 204 status no content
      */
     public function createPreflightHeader(Request $request)
     {
         header('Access-Control-Allow-Headers: Authorization, Content-Type, X-CSRF-TOKEN');
 
-        return response([
-            'message' => 'No content',
-        ], 204);
+        return response()
+            ->json([
+                'message' => 'No content',
+            ], 204);
     }
 
     /**
