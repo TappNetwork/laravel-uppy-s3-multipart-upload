@@ -99,7 +99,6 @@ class UppyS3MultipartController extends Controller
      *       }, { signal }).then(assertServerError)
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $uploadId
      * @return string  JSON with the uploaded parts
      */
     public function createMultipartUpload(Request $request)
