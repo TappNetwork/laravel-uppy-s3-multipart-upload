@@ -23,8 +23,9 @@ class UppyS3MultipartController extends Controller
     /**
      * Encode URI.
      *
-     * @param  string  $str
-     * @return string  The encoded URI string
+     * @param string $str
+     *
+     * @return string The encoded URI string
      */
     protected function encodeURIComponent(string $str)
     {
@@ -40,7 +41,7 @@ class UppyS3MultipartController extends Controller
     /**
      * Add the preflight response header so it's possible to use the X-CSRF-TOKEN on Uppy request header.
      *
-     * @return string  JSON with 204 status no content
+     * @return string JSON with 204 status no content
      */
     public function createPreflightHeader(Request $request)
     {
@@ -57,7 +58,6 @@ class UppyS3MultipartController extends Controller
      *
      * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#createmultipartupload  S3 Syntax
      * @see https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html  S3 Syntax
-     *
      * $result = $client->createMultipartUpload([
      *    'ACL' => 'private|public-read|public-read-write|authenticated-read|aws-exec-read|bucket-owner-read|bucket-owner-full-control',
      *    'Bucket' => '<string>', // REQUIRED
@@ -89,17 +89,16 @@ class UppyS3MultipartController extends Controller
      *    'Tagging' => '<string>',
      *    'WebsiteRedirectLocation' => '<string>',
      * ]);
-     *
      * @see https://github.com/transloadit/uppy/blob/master/packages/%40uppy/aws-s3-multipart/src/index.js  Uppy call to this endpoint
-     *
      * return this.#client.post('s3/multipart', {
      *           filename: file.name,
      *           type: file.type,
      *           metadata,
      *       }, { signal }).then(assertServerError)
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string  JSON with the uploaded parts
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return string JSON with the uploaded parts
      */
     public function createMultipartUpload(Request $request)
     {
@@ -134,9 +133,10 @@ class UppyS3MultipartController extends Controller
     /**
      * List the multipart uploaded parts.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $uploadId
-     * @return string  JSON with the uploaded parts
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $uploadId
+     *
+     * @return string JSON with the uploaded parts
      */
     public function getUploadedParts(Request $request, string $uploadId)
     {
@@ -151,9 +151,7 @@ class UppyS3MultipartController extends Controller
     /**
      * Get the uploaded parts. Retry the part if it's truncated.
      *
-     *
      * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#listparts  S3 Syntax
-     *
      * $result = $client->listParts([
      *           'Bucket' => '<string>', // REQUIRED
      *           'ExpectedBucketOwner' => '<string>',
@@ -163,15 +161,14 @@ class UppyS3MultipartController extends Controller
      *           'RequestPayer' => 'requester',
      *           'UploadId' => '<string>', // REQUIRED
      *       ]);
-     *
      * @see https://github.com/transloadit/uppy/blob/master/packages/%40uppy/aws-s3-multipart/src/index.js  Uppy call to this endpoint
-     *
      * return this.#client.get(`s3/multipart/${uploadId}?key=${filename}`, { signal })
      *          .then(assertServerError)
      *
-     * @param  string  $key
-     * @param  string  $uploadId
-     * @param  int  $partIndex
+     * @param string $key
+     * @param string $uploadId
+     * @param int    $partIndex
+     *
      * @return \Illuminate\Support\Collection
      */
     private function listPartsPage(string $key, string $uploadId, int $partIndex, $parts = null)
@@ -201,7 +198,6 @@ class UppyS3MultipartController extends Controller
      * Completes a multipart upload by assembling previously uploaded parts.
      *
      * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#completemultipartupload  S3 Syntax
-     *
      * $result = $client->completeMultipartUpload([
      *           'Bucket' => '<string>', // REQUIRED
      *           'ExpectedBucketOwner' => '<string>',
@@ -218,14 +214,13 @@ class UppyS3MultipartController extends Controller
      *           'RequestPayer' => 'requester',
      *           'UploadId' => '<string>', // REQUIRED
      *       ]);
-     *
      * @see https://github.com/transloadit/uppy/blob/master/packages/%40uppy/aws-s3-multipart/src/index.js  Uppy call to this endpoint
-     *
      * return this.#client.post(`s3/multipart/${uploadIdEnc}/complete?key=${filename}`, { parts }, { signal })
      *           .then(assertServerError)
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $uploadId
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $uploadId
+     *
      * @return string
      */
     public function completeMultipartUpload(Request $request, string $uploadId)
@@ -264,7 +259,6 @@ class UppyS3MultipartController extends Controller
      * Aborts a multipart upload, deleting the uploaded parts.
      *
      * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#abortmultipartupload   S3 Syntax
-     *
      * $result = $client->abortMultipartUpload([
      *           'Bucket' => '<string>', // REQUIRED
      *           'ExpectedBucketOwner' => '<string>',
@@ -272,15 +266,14 @@ class UppyS3MultipartController extends Controller
      *           'RequestPayer' => 'requester',
      *           'UploadId' => '<string>', // REQUIRED
      *       ]);
-     *
      * @see https://github.com/transloadit/uppy/blob/master/packages/%40uppy/aws-s3-multipart/src/index.js  Uppy call to this endpoint
-     *
      * return this.#client.delete(`s3/multipart/${uploadIdEnc}?key=${filename}`, undefined, { signal })
      *           .then(assertServerError)
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $uploadId
-     * @return string  JSON empty
+     * @param \Illuminate\Http\Request $request
+     * @param string                   $uploadId
+     *
+     * @return string JSON empty
      */
     public function abortMultipartUpload(Request $request, string $uploadId)
     {
@@ -299,8 +292,9 @@ class UppyS3MultipartController extends Controller
     /**
      * Presign a URL for a part.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string  JSON with the URL
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return string JSON with the URL
      */
     public function signPartUpload(Request $request)
     {
@@ -316,7 +310,6 @@ class UppyS3MultipartController extends Controller
      * Get the presigned URL for a part.
      *
      * @see https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#uploadpart  S3 Syntax
-     *
      * $result = $client->uploadPart([
      *           'Body' => <string || resource || Psr\Http\Message\StreamInterface>,
      *           'Bucket' => '<string>', // REQUIRED
@@ -332,14 +325,13 @@ class UppyS3MultipartController extends Controller
      *           'SourceFile' => '<string>',
      *           'UploadId' => '<string>', // REQUIRED
      *       ]);
-     *
      * @see https://github.com/transloadit/uppy/blob/master/packages/%40uppy/aws-s3-multipart/src/index.js  Uppy call to this endpoint
-     *
      * return this.#client.get(`s3/multipart/${uploadId}/${partNumber}?key=${filename}`, { signal })
      *           .then(assertServerError)
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $partNumber
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $partNumber
+     *
      * @return string
      */
     public function getSignedUrl(Request $request, int $partNumber)
