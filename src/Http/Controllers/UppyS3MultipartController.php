@@ -106,7 +106,7 @@ class UppyS3MultipartController extends Controller
         $filenameRequest = $request->input('filename');
         $fileExtension = pathinfo($filenameRequest, PATHINFO_EXTENSION);
         $folder = config('uppy-s3-multipart-upload.s3.bucket.folder') ? config('uppy-s3-multipart-upload.s3.bucket.folder').'/' : '';
-	    $key = $folder.Str::ulid().'.'.$fileExtension;
+        $key = $folder.Str::ulid().'.'.$fileExtension;
 
         try {
             $result = $this->client->createMultipartUpload([
