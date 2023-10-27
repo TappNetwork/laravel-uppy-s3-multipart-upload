@@ -297,7 +297,7 @@ class UppyS3MultipartController extends Controller
      */
     public function signPartUpload(Request $request)
     {
-        $url = $this->getSignedUrl($request, $request->route('partNumber'));
+        $url = $this->getSignedUrl($request, intval($request->route('partNumber')));
 
         return response()
             ->json([
