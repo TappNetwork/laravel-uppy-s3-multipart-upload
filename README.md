@@ -1,6 +1,7 @@
 # Multipart Uploads using Laravel, AWS S3, and Uppy
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
+![PHPStan](https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/actions/workflows/phpstan.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
 
 Upload large files directly to [AWS S3](https://aws.amazon.com/s3/) using [Laravel](https://laravel.com/) (backend) and [Uppy](https://uppy.io/) (frontend).
