@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-uppy-s3-multipart-upload` will be documented in this file.
 
+## v1.3.0 - 2025-11-25
+
+### What's Changed
+
+* Laravel 12 Compatibility ... continued by @flexgrip in https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/pull/29
+* Laravel 12 compatibility by @azimidev in https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/pull/28
+
+### New Contributors
+
+* @flexgrip made their first contribution in https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/pull/29
+* @azimidev made their first contribution in https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/pull/28
+
+**Full Changelog**: https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/compare/v1.2.1...v1.3.0
+
 ## 0.1 - 2021-02-11
 
 - Initial release
