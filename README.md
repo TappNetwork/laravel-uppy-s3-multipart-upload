@@ -1,5 +1,8 @@
 # Multipart Uploads using Laravel, AWS S3, and Uppy
 
+> [!WARNING]
+> **This package is deprecated and the repository is archived.** It will get no further updates. v2.0.0 is the last release: it requires authentication on the `/s3/multipart` routes by default (see [UPGRADE.md](UPGRADE.md)). If you still use it, upgrade to v2.0.0 and plan to move to another upload solution.
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
 ![PHPStan](https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/actions/workflows/phpstan.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
@@ -113,6 +116,15 @@ return [
              */
             'expiry_time' => '+1 hour',
         ],
+    ],
+    'routes' => [
+        /*
+         * Middleware for the /s3/multipart routes. Whoever can reach them can
+         * upload files to your bucket, so a logged-in user is required by default.
+         * E.g. ['web', 'auth:admin'], or ['api', 'auth:sanctum'] for an API client.
+         * Use ['web'] only if guests really must be able to upload.
+         */
+        'middleware' => ['web', 'auth'],
     ],
 ];
 ```
@@ -239,6 +251,13 @@ GET     /s3/multipart/{uploadId}/{partNumber}
 POST    /s3/multipart/{uploadId}/complete
 DELETE  /s3/multipart/{uploadId}
 ```
+
+### Protecting the endpoints
+
+Anyone who can call these endpoints can upload files to your S3 bucket. By default they use
+the `web` and `auth` middleware, so only logged-in users can upload (the `OPTIONS` route stays open).
+Change `routes.middleware` in `config/uppy-s3-multipart-upload.php` to use another guard
+(e.g. `['web', 'auth:admin']` or `['api', 'auth:sanctum']`), or add your own middleware.
 
 ## Usage
 

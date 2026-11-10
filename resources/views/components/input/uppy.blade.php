@@ -32,7 +32,7 @@
               companionUrl: '/',
               companionHeaders:
               {
-                  'X-CSRF-TOKEN': window.csrfToken,
+                  'X-CSRF-TOKEN': '{{ csrf_token() }}',
               },
           })
           .use(StatusBar, {{ $statusBarOptions }})
