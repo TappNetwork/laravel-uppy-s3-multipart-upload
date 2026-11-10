@@ -1,6 +1,6 @@
 # Upgrade Guide
 
-## Upgrading to the next release
+## Upgrading from 1.x to 2.0.0
 
 ### The upload endpoints now require a logged-in user
 
