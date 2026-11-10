@@ -114,6 +114,15 @@ return [
             'expiry_time' => '+1 hour',
         ],
     ],
+    'routes' => [
+        /*
+         * Middleware for the /s3/multipart routes. Whoever can reach them can
+         * upload files to your bucket, so a logged-in user is required by default.
+         * E.g. ['web', 'auth:admin'], or ['api', 'auth:sanctum'] for an API client.
+         * Use ['web'] only if guests really must be able to upload.
+         */
+        'middleware' => ['web', 'auth'],
+    ],
 ];
 ```
 
@@ -239,6 +248,13 @@ GET     /s3/multipart/{uploadId}/{partNumber}
 POST    /s3/multipart/{uploadId}/complete
 DELETE  /s3/multipart/{uploadId}
 ```
+
+### Protecting the endpoints
+
+Anyone who can call these endpoints can upload files to your S3 bucket. By default they use
+the `web` and `auth` middleware, so only logged-in users can upload (the `OPTIONS` route stays open).
+Change `routes.middleware` in `config/uppy-s3-multipart-upload.php` to use another guard
+(e.g. `['web', 'auth:admin']` or `['api', 'auth:sanctum']`), or add your own middleware.
 
 ## Usage
 
