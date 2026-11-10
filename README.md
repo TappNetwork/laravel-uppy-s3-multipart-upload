@@ -1,5 +1,8 @@
 # Multipart Uploads using Laravel, AWS S3, and Uppy
 
+> [!WARNING]
+> **This package is deprecated and the repository is archived.** It will get no further updates. v2.0.0 is the last release: it requires authentication on the `/s3/multipart` routes by default (see [UPGRADE.md](UPGRADE.md)). If you still use it, upgrade to v2.0.0 and plan to move to another upload solution.
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
 ![PHPStan](https://github.com/TappNetwork/laravel-uppy-s3-multipart-upload/actions/workflows/phpstan.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/tapp/laravel-uppy-s3-multipart-upload.svg?style=flat-square)](https://packagist.org/packages/tapp/laravel-uppy-s3-multipart-upload)
